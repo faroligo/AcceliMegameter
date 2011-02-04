@@ -1,0 +1,24 @@
+AcceliMegameter
+===============
+AcceliMegameter demonstrates simply collecting accelerometer and compass data and transmitting it over a UDP socket.  It also has two buttons for transmitting messages.
+
+It is purely a proof of concept and should be used as such.
+
+Message
+-------
+The messages transmitted over the network are.
+NB: STX is ascii character 2.  ETX is ascii character 3. TAB is ascii character 9.
+
+*  Accelerometer data: [STX]001A[XVALUE][TAB][YVALUE][TAB][ZVALUE][ETX]
+*  Heading data: [STX]001D[HEADINGDATA][ETX]
+*  BUTTON1 Presseed: [STX]001B[ETX]
+*  BUTTON2 Presseed: [STX]001C[ETX]
+
+
+Settings
+--------
+On the settings page you can:
+1. Change the App title.
+2. Set the IP address it transmits to.
+3. Set the titles of the Two buttons.
+4. Set the transmit rate of the accelerometer and the accuracy of the compass.

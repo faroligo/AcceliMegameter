@@ -8,17 +8,13 @@
 
 #import "FlipsideViewController.h"
 
-
 @implementation FlipsideViewController
-
 @synthesize delegate;
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
 }
-
 
 - (IBAction)done:(id)sender {
 	[self.delegate flipsideViewControllerDidFinish:self];	
@@ -27,7 +23,6 @@
 - (IBAction)changeIP:(id)sender {
 	[self.delegate setIP:self ipAddress:ipField.text];
 }
-
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -41,19 +36,8 @@
 	// e.g. self.myOutlet = nil;
 }
 
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
-
 - (void)dealloc {
     [super dealloc];
 }
-
 
 @end

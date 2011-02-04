@@ -15,7 +15,6 @@ extern NSString * const kNotificationMessage;
 
 @class AsyncUdpSocket;
 
-
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIAccelerometerDelegate, CLLocationManagerDelegate> {
 	AsyncUdpSocket *socket;
 	BOOL isRunning;
@@ -40,15 +39,14 @@ extern NSString * const kNotificationMessage;
 	float accelerationZ;
 }
 
-
 - (IBAction)showInfo:(id)sender;
 - (IBAction)fireButtonPressed:(id)sender;
 - (IBAction)resetButtonPressed:(id)sender;
 
 @property (readwrite, assign) BOOL isRunning;
 @property (nonatomic, retain) CLLocationManager *locationManager;
-
 @property (nonatomic, retain) NSString *UDPservIPAddress;
+@property (nonatomic, retain) AsyncUdpSocket *socket;
 
 - (void)sendAccelData:(float)x y:(float)y z:(float)z;
 - (void)connectToHost:(NSString *)hostName onPort:(int)port;

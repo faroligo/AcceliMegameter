@@ -19,20 +19,15 @@ NSString * const kNotificationMessage = @"kNotificationMessage";
 @synthesize locationManager;
 @synthesize isRunning;
 @synthesize UDPservIPAddress;
+@synthesize socket;
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
 	[NSUserDefaults resetStandardUserDefaults];
 	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-	//[prefs synchronize];
-	
-	//if(!prefs)
-	///{
-	//	NSLog(@"FAILED CONFIG");
-	//}
-	socket = [[AsyncUdpSocket alloc] initWithDelegate:self];
+
+	self.socket = [[[AsyncUdpSocket alloc] initWithDelegate:self] autorelease];
     [self setIsRunning:NO];
     notificationCenter = [NSNotificationCenter defaultCenter];
 	
@@ -55,7 +50,7 @@ NSString * const kNotificationMessage = @"kNotificationMessage";
 	
 	NSLog([NSString stringWithFormat:@"%@",UDPservIPAddress]);
 	
-	locationManager=[[CLLocationManager alloc] init];
+	self.locationManager=[[[CLLocationManager alloc] init] autorelease];
 	
 	locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 
@@ -65,28 +60,24 @@ NSString * const kNotificationMessage = @"kNotificationMessage";
         // so a dialog will be displayed and no magnetic data will be measured.
         self.locationManager = nil;
         UIAlertView *noCompassAlert = [[UIAlertView alloc] initWithTitle:@"No Compass!" message:@"This device does not have the ability to measure magnetic fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[noCompassAlert release];
 	} else {
 		locationManager.delegate = self; // Set the delegate as self.
 		locationManager.headingFilter = compassRefresh;
 		[locationManager startUpdatingHeading];
 	}
-
-	
-	//[self connectToHost:theServer onPort:thePort];
 }
 
 
 - (void)dealloc {
     [socket close];
-    [socket dealloc];
+    [socket release];
 	[locationManager stopUpdatingHeading];
 	[locationManager release];
-	[locationManager dealloc];
 	[UDPservIPAddress release];
 	[super dealloc];
   
 }
-
 
 -(void)sendAccelData:(float)x y:(float)y z:(float)z {
 	NSLog([NSString stringWithFormat:@"%c001A%0.4f%c%0.4f%c%0.4f%c",2,x,9,y,9,z,3]);
@@ -198,24 +189,19 @@ NSString * const kNotificationMessage = @"kNotificationMessage";
 
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
-
 	CLLocationDirection headingTrue = newHeading.trueHeading;
 	[lblHeading setText:[NSString stringWithFormat:@"Heading: %0.1f",headingTrue]];
 	[self sendHeadingData:headingTrue];
-	//NSLog(@"Done");
-	//CLLocationDirection magnetic = [newHeading magneticHeading];	
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     if ([error code] == kCLErrorDenied) {
         // This error indicates that the user has denied the application's request to use location services.
-        
     } else if ([error code] == kCLErrorHeadingFailure) {
         // This error indicates that the heading could not be determined, most likely because of strong magnetic interference.
 		NSLog(@"Error");
     }
 }
-
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -224,21 +210,13 @@ NSString * const kNotificationMessage = @"kNotificationMessage";
 	// Release any cached data, images, etc. that aren't in use.
 }
 
-
 - (void)viewDidUnload {
+	self.socket = nil;
+	self.locationManager = nil;
+	self.UDPservIPAddress = nil;
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
-
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations.
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
 
 
 @end

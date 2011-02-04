@@ -20,6 +20,7 @@
 		D1512E801286EDDD005C9274 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1512E7F1286EDDD005C9274 /* CFNetwork.framework */; };
 		D16822B112872B9D0045B1CB /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D16822B012872B9D0045B1CB /* AsyncUdpSocket.m */; };
 		D16824081287659E0045B1CB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D16824071287659E0045B1CB /* icon.png */; };
+		D169EF5C12FCBED0004E1874 /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = D169EF5B12FCBED0004E1874 /* README.mdown */; };
 		D1A74E78128C65F8002D448D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D1A74E77128C65F8002D448D /* Settings.bundle */; };
 		D1CC0D1312878D1400111FA8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CC0D1212878D1300111FA8 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		D16822AF12872B9D0045B1CB /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
 		D16822B012872B9D0045B1CB /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
 		D16824071287659E0045B1CB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		D169EF5B12FCBED0004E1874 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = "<group>"; };
 		D1A74E77128C65F8002D448D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D1CC0D1212878D1300111FA8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D169EF5B12FCBED0004E1874 /* README.mdown */,
 				D16824071287659E0045B1CB /* icon.png */,
 				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
@@ -206,6 +209,7 @@
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
 				D16824081287659E0045B1CB /* icon.png in Resources */,
 				D1A74E78128C65F8002D448D /* Settings.bundle in Resources */,
+				D169EF5C12FCBED0004E1874 /* README.mdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +267,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};

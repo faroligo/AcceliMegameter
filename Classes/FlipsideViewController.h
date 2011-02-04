@@ -16,12 +16,10 @@
 	IBOutlet UITextField *ipField;
 }
 
-
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
 - (IBAction)done:(id)sender;
 - (IBAction)changeIP:(id)sender;
 @end
-
 
 @protocol FlipsideViewControllerDelegate
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller;
