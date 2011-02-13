@@ -48,7 +48,7 @@ NSString * const kNotificationMessage = @"kNotificationMessage";
 	UDPservIPAddress = [prefs stringForKey:@"ipaddress_preference"];
     serverPort=1001;
 	
-	NSLog([NSString stringWithFormat:@"%@",UDPservIPAddress]);
+	NSLog(@"%@",UDPservIPAddress);
 	
 	self.locationManager=[[[CLLocationManager alloc] init] autorelease];
 	
@@ -80,23 +80,23 @@ NSString * const kNotificationMessage = @"kNotificationMessage";
 }
 
 -(void)sendAccelData:(float)x y:(float)y z:(float)z {
-	NSLog([NSString stringWithFormat:@"%c001A%0.4f%c%0.4f%c%0.4f%c",2,x,9,y,9,z,3]);
+	NSLog(@"%c001A%0.4f%c%0.4f%c%0.4f%c",2,x,9,y,9,z,3);
 	[self sendMessage:[NSString stringWithFormat:@"%c001A%0.4f%c%0.4f%c%0.4f%c",2,x,9,y,9,z,3]];	
 }
 
 -(void)sendHeadingData:(float)angle {
-	NSLog([NSString stringWithFormat:@"%c001D%0.2f%c",2,angle,3]);
+	NSLog(@"%c001D%0.2f%c",2,angle,3);
 	[self sendMessage:[NSString stringWithFormat:@"%c001D%0.2f%c",2,angle,3]];
 	
 }
 
 - (IBAction)fireButtonPressed:(id)sender {
-	NSLog([NSString stringWithFormat:@"%c001B%c",2,3]);
+	NSLog(@"%c001B%c",2,3);
 	[self sendMessage:[NSString stringWithFormat:@"%c001B%c",2,3]];		
 }
 
 - (IBAction)resetButtonPressed:(id)sender {
-	NSLog([NSString stringWithFormat:@"%c001C%c",2,3]);
+	NSLog(@"%c001C%c",2,3);
 	[self sendMessage:[NSString stringWithFormat:@"%c001C%c",2,3]];		
 }
 
