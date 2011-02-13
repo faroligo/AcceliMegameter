@@ -30,6 +30,34 @@
     return YES;
 }
 
++ (void)initialize
+{
+	if (![[NSUserDefaults standardUserDefaults] objectForKey:@"BNRMessagePrefKey"])  {
+		
+		NSString  *mainBundlePath = [[NSBundle mainBundle] bundlePath];
+		NSString  *settingsPropertyListPath = [mainBundlePath
+											   stringByAppendingPathComponent:@"Settings.bundle/Root.plist"];
+		
+		NSDictionary *settingsPropertyList = [NSDictionary 
+											  dictionaryWithContentsOfFile:settingsPropertyListPath];
+		
+		NSMutableArray      *preferenceArray = [settingsPropertyList objectForKey:@"PreferenceSpecifiers"];
+		NSMutableDictionary *registerableDictionary = [NSMutableDictionary dictionary];
+		
+		for (int i = 0; i < [preferenceArray count]; i++)  { 
+			NSString  *key = [[preferenceArray objectAtIndex:i] objectForKey:@"Key"];
+			
+			if (key)  {
+				id  value = [[preferenceArray objectAtIndex:i] objectForKey:@"DefaultValue"];
+				[registerableDictionary setObject:value forKey:key];
+			}
+		}
+		
+		[[NSUserDefaults standardUserDefaults] registerDefaults:registerableDictionary]; 
+		[[NSUserDefaults standardUserDefaults] synchronize]; 
+	} 
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

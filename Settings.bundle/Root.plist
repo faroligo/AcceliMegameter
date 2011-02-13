@@ -66,7 +66,7 @@
 			<key>Key</key>
 			<string>title_preference</string>
 			<key>DefaultValue</key>
-			<string>Lumina Test</string>
+			<string>Acceli Megameter</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>KeyboardType</key>
@@ -84,7 +84,7 @@
 			<key>Key</key>
 			<string>buttona_preference</string>
 			<key>DefaultValue</key>
-			<string>FIRE</string>
+			<string>A</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>KeyboardType</key>
@@ -102,7 +102,7 @@
 			<key>Key</key>
 			<string>buttonb_preference</string>
 			<key>DefaultValue</key>
-			<string>RESET</string>
+			<string>B</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>KeyboardType</key>
